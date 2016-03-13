@@ -1,2 +1,2 @@
 # SiriusPlanet.Alpha
-LeetCode solution in Java
+LeetCode solutions in Java
