@@ -1,10 +1,6 @@
 """
 This class is a solution to leet_code 310:
 ----Minimum Height Trees---
-I think there is some problem, when the graph is a
-closed one, for example;
-n = 4 , edges = [[0,1],[1,2],[2,3],[3,4]]
-then BOOM
 """
 
 
