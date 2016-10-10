@@ -34,6 +34,8 @@ class State:
         self.parent = None
         self.repeated_count = 0
         self.state_format = '({0},{1},{2})'
+        self.repeat_count = 0
+
 
     def is_goal(self):
         """
@@ -66,10 +68,10 @@ class State:
         :return: Boolean
         """
         if (self.missionaries, self.cannibals, self.boat) in discovered_states:
-            print('repeat')
+            self.repeat_count += 1
             return False
         else:
-            discovered_states.add((self.missionaries, self.cannibals, self.boat))
+            # discovered_states.add((self.missionaries, self.cannibals, self.boat))
             return True
 
     @staticmethod
@@ -81,7 +83,6 @@ class State:
         """
         children = []
         if current_state.missionaries is 0 and current_state.cannibals is 0 and current_state.boat is 'R':
-            print("**&*&*&*&*")
             children = []
         elif current_state.boat is 'L':
             # 2 cannibals from left to right
@@ -100,7 +101,6 @@ class State:
             new_state = State(current_state.missionaries, current_state.cannibals - 1, 'R')
             State.operate_legal_state(new_state, current_state, children)
         elif current_state.boat is 'R':
-            print("use this")
             # 2 cannibals from right to left
             new_state = State(current_state.missionaries, current_state.cannibals + 2, 'L')
             State.operate_legal_state(new_state, current_state, children)
@@ -134,42 +134,46 @@ class State:
             children.append(new_state)
 
     @staticmethod
-    def DFS(current_state, discovered_states):
-        current_state.is_discovered(discovered_states)
+    def DFS(current_state, discovered_states, progress):
+        discovered_states.add((current_state.missionaries,current_state.cannibals,current_state.boat))
+        # print(discovered_states)
         for s in State.successors(current_state):
-            print(s.state_format.format(current_state.missionaries, current_state.cannibals, current_state.boat))
-            # current_state = s
-            while s.is_discovered(discovered_states):
-                # print("m:{0}, c:{1}, b:{2}, pm:{3},pc:{4},pb:{5}".format(s.missionaries, s.cannibals, s.boat,
-                # s.parent.missionaries, s.parent.cannibals,
-                # s.parent.boat))
+            if s.is_discovered(discovered_states):
                 s.parent = current_state
+                progress.append(current_state)
                 current_state = s
-                print(s.state_format.format(current_state.missionaries, current_state.cannibals, current_state.boat))
+                print((s.parent.missionaries, s.parent.cannibals, s.parent.boat))
                 if s.is_goal():
-                    print('~~~~~~~~~~~~~~finish~~~~~~~~~~~~~~')
-                    print('-----@@@@{0}'.format(s))
-                    return s
+                    # print('~~~~~~~~~~~~~~finish~~~~~~~~~~~~~~')
+                    for i in range(4):
+                        State(0,0,'R').parent = s
+                        # discovered_states = set()
+                        # discovered_states.add((3,1,"R"))
+                        # State.DFS(State(3, 3, 'L'), discovered_states, progress)
                 else:
-                    State.DFS(current_state, discovered_states)
+                    State.DFS(current_state, discovered_states, progress)
 
     @staticmethod
     def solution():
         discovered_states = set()
         initial_state = State(3, 3, 'L')
         progress = []
-        progress.append(initial_state)
-        # repeated_count = 0
-        # print(progress[0])
-        final = State.DFS(initial_state, discovered_states)
-        # print(type(final))
-        # print(State(0,0,'L').state_format.format(final.missionries, final.cannibals, final.boat))
-
+        State.DFS(initial_state, discovered_states, progress)
+        for i in range(len(progress)):
+            print("parent-------{0}".format((progress[11].parent.missionaries, progress[11].parent.cannibals, progress[11].parent.boat)))
+        # while s.par
+        # return s
 
 if __name__ == '__main__':
     # print(State.successors(State(0,0,'R')))
-    State.solution()
-    # s = State(3, 1, 'R')
+    s = State.solution()
+
+    # s = State(3, 3, 'L')
+    # s = s.successors(s)
+    #
+    # for n in s:
+    #     print((n.missionaries, n.cannibals, n.boat))
+
     # e = set()
     # s0 = State(3, 3, 'L')
     # repeated_count = 0
