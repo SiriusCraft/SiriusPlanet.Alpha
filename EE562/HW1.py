@@ -1,5 +1,7 @@
 """
-maintainer: Cunzhi Ren <renc@uw.edu>
+Last update: 2016-10-10 21:45
+Maintainer: Cunzhi Ren <renc@uw.edu>
+Environment: python 3.5.2
 HomeWork1 of EE562 Artificial Intelligence for Engineers:
 Missionary-Cannibal Problem (with 3 missionaries and 3 cannibals)
 with a RECURSIVE DEPTH-FIRST SEARCH
