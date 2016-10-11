@@ -1,3 +1,7 @@
+"""
+as for 'word', cannot be split with split() method.
+then we use list() to make 'word' a list thus split 'word'
+"""
 class Solution(object):
     def isIsomorphic(self, s, t):
         """
