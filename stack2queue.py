@@ -1,5 +1,6 @@
 """
 list index is -1 means the last value in list
+use stack realizes queue
 """
 
 
@@ -32,11 +33,4 @@ class Queue:
 
 
 if __name__ == '__main__':
-    q = Queue()
-    q.push(1)
-    q.push(2)
-    q.push(3)
-    # print(Queue.kind)
-    print(q.peek())
-    # while q:
-    #     print(q.pop())
+    pass
