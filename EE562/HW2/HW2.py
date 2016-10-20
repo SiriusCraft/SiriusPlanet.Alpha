@@ -5,6 +5,12 @@ Environment: python 3.5.2
 HomeWork1 of EE562 Artificial Intelligence for Engineers:
 A* Search   refer to
 http://homes.cs.washington.edu/~shapiro/EE562/hw2/index.html
+***************************************************************
+BTW the data set files is supposed store in the same directory
+as this program. Or you might change the file path from line
+134 to 136
+***************************************************************
+
 """
 from math import sqrt, pow
 import operator
@@ -128,8 +134,8 @@ class ProblemMap:
     data_set1 = './data_set1'
     data_set2 = './data_set2'
     data_set3 = './data_set3'
-    output_format = "({0},{1})       {2}"
-    index_format = "{0}      {1}"
+    output_format = "({0},{1})\t\t\t{2}"
+    index_format = "{0}\t\t\t{1}"
 
     def __init__(self, data_set):
         """
@@ -287,7 +293,8 @@ class ProblemMap:
             intersection = self.line_intersection(diagonal, line)
             if not intersection:
                 continue
-            elif (diagonal[0][0] < intersection[0] < diagonal[1][0] or diagonal[1][0] < intersection[0] < diagonal[0][0]) \
+            elif (diagonal[0][0] < intersection[0] < diagonal[1][0] or diagonal[1][0] < intersection[0] < diagonal[0][
+                0]) \
                     and (line[0][0] < intersection[0] < line[1][0] or line[1][0] < intersection[0] < line[0][0]):
                 return False
         return True
@@ -381,8 +388,19 @@ class ProblemMap:
         print(self.index_format.format('Point', 'Cumulative Cost'))
         for i in range(len(path)):
             print(self.output_format.format(path[i].x, path[i].y, round(path[i].g, 3)))
+        print("################################\n")
 
 
 if __name__ == '__main__':
-    pm = ProblemMap(ProblemMap.data_set3)
-    pm.solution()
+    # This is your simple data set solution
+    print("#######Data set1 solution#######")
+    pm1 = ProblemMap(ProblemMap.data_set1)
+    pm1.solution()
+    # This is your complex data set solution
+    print("#######Data set2 solution#######")
+    pm2 = ProblemMap(ProblemMap.data_set2)
+    pm2.solution()
+    # This is my data set with 7 obstacles solution
+    print("#######Data set3 solution#######")
+    pm3 = ProblemMap(ProblemMap.data_set3)
+    pm3.solution()
