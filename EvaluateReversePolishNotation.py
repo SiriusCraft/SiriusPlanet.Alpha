@@ -23,13 +23,13 @@ class Solution(object):
                 calculate_ans = 0
                 calculate_us.append(stack.pop())
                 calculate_us.append(stack.pop())
-                if tocken is '+':
+                if tocken == '+':
                     calculate_ans = calculate_us[1] + calculate_us[0]
-                if tocken is '-':
+                if tocken == '-':
                     calculate_ans = calculate_us[1] - calculate_us[0]
-                if tocken is '*':
+                if tocken == '*':
                     calculate_ans = calculate_us[1] * calculate_us[0]
-                if tocken is '/':
+                if tocken == '/':
                     if calculate_us[1] * calculate_us[0] < 0:
                         calculate_ans = -((-calculate_us[1]) / calculate_us[0])
                     else:
