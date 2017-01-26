@@ -3,6 +3,7 @@ This module includes LinkedList class, which is a singly
 linked list with functional methods.
 """
 from DataStructure.ListNode import ListNode
+import traceback
 
 
 class LinkedList:
@@ -106,6 +107,64 @@ class LinkedList:
             mid_pointer = slow_pointer
             return mid_pointer
 
+    @staticmethod
+    def reverse_between(head, m, n):
+        # sub_list = LinkedList(LinkedList(head).get_sub_list(m, n)).reverse_list()
+        # if m-1 > 0:
+        #     pre_node = LinkedList.find_node_n(head, m-1)
+        #     pre_node.next = sub_list
+        # next_node = LinkedList.find_node_n(head, n+1)
+        # print("xxxxxxxx{0}".format(next_node.val))
+        # # if next_node:
+        # #     LinkedList.find_node_n(head, n).next = next_node
+        # # print("..................")
+        # # LinkedList(head).print_list()
+        # # print("..................")
+        # # if next_node:
+        # # return sub_list
+        pass
+
+    @staticmethod
+    def find_node_n(head, n):
+        """
+        This method find node in position n,
+        where the head is in position 1
+        :param head: head of input list
+        :param n: position number
+        :return: node_n
+        """
+        if n < 1:
+            print("Less than 1")
+            return None
+        else:
+            try:
+                for i in range(n - 1):
+                    head = head.next
+                return head
+            except AttributeError:
+                traceback.print_exc()
+
+    def get_sub_list(self, m, n):
+        """
+        This method extract a sub_list from list started
+        from position m to n.
+        :param m: start position
+        :param n: end position
+        :return: sub_head
+        """
+        sub_head = self.find_node_n(self.head, m)
+        sub_end = self.find_node_n(self.head, n)
+        sub_end.next = None
+        return sub_head
+
 
 if __name__ == '__main__':
-    pass
+    l = LinkedList(LinkedList.generate_test_list(10))
+    l.print_list()
+    # n_node = l.find_node_n(l.head, 9)
+    # print("~~~~~~~~~~{0}~~~~~~~~~~~".format(n_node.val))
+    # new_list = LinkedList(l.reverse_between(l.head,3,6))
+    # sub_l = LinkedList(l.get_sub_list(6, 7))
+    # sub_l.print_list()
+    rl = LinkedList(l.reverse_between(l.head, 2, 9))
+    # rl.print_list()
