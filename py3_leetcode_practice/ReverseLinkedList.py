@@ -1,5 +1,5 @@
-from .DataStructure.ListNode import ListNode
-from .DataStructure.LinkedList import LinkedList
+from DataStructure.ListNode import ListNode
+from DataStructure.LinkedList import LinkedList
 
 
 class ReverseLinkedList:
