@@ -4,7 +4,7 @@ import math
 
 from numpy import shape
 
-f = open('/Users/SiriusR/Documents/ee511/hw3/20ng-train-all-terms.txt', "r")
+f = open('/Users/SiriusR/Documents/ee511/read_some_newspaper/20ng-train-all-terms.txt', "r")
 lines = f.readlines()
 line0 = lines[0].split()
 category = line0[0]

@@ -128,7 +128,7 @@ class bostonHousingPrice:
     TRAIN_DATA_SHEET_NAME = 'one_hot_train'
     VALIDATION_DATA_SHEET_NAME = 'vali_onehot'
     TEST_DATA_SHEET_NAME = 'test_onehot'
-    DATASET_PATH = '/Users/SiriusR/Documents/EE511/data.xlsx'
+    DATASET_PATH = '/Users/SiriusR/Documents/Pluto/data.xlsx'
 
     def __init__(self):
         self.data_train = pd.read_excel(self.DATASET_PATH, sheetname=self.TRAIN_DATA_SHEET_NAME)
